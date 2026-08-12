@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nouveau Élan Paris — L'art de l'individualité</title>
+<meta name="description" content="Nouveau Élan Paris — timeless French luxury apparel for those who build their own legacy. La Première Collection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #101d31;
+    --navy-deep: #0a1523;
+    --forest: #1c3327;
+    --ivory: #f2ede0;
+    --ivory-dim: #e8e1d1;
+    --charcoal: #17140f;
+    --camel: #c69a67;
+    --camel-soft: #d8b98a;
+    --burgundy: #6d2430;
+    --hairline: rgba(198,154,103,0.35);
+    --serif: 'Bodoni Moda', 'Times New Roman', serif;
+    --sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--sans);
+    background: var(--ivory);
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+    overflow-x:hidden;
+  }
+  body.locked{overflow:hidden;}
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .eyebrow{
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--camel);
+  }
+
+  .wrap{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+  }
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in{opacity:1; transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  /* ---------- utility bar ---------- */
+  .utility-bar{
+    background: var(--charcoal);
+    color: var(--ivory-dim);
+    text-align:center;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1rem;
+    position: relative; z-index: 501;
+  }
+  .utility-bar strong{color: var(--camel-soft); font-weight:600;}
+
+  /* ---------- nav ---------- */
+  header.site-nav{
+    position: sticky; top:0; left:0; right:0; z-index: 500;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.3rem clamp(1.5rem, 5vw, 3rem);
+    background: linear-gradient(to bottom, rgba(10,21,35,0.94), rgba(10,21,35,0.85));
+    transition: background .4s var(--ease), padding .4s var(--ease);
+  }
+  header.site-nav.scrolled{
+    padding: 0.85rem clamp(1.5rem, 5vw, 3rem);
+    background: rgba(10,21,35,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .brand-mark{
+    display:flex; align-items:center; gap:0.65rem;
+    color: var(--ivory);
+  }
+  .brand-mark svg{width:30px; height:30px;}
+  .brand-mark .name{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  nav.links{display:flex; gap: clamp(1rem, 2.6vw, 2.2rem); align-items:center;}
+  nav.links a{
+    color: var(--ivory-dim);
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background: var(--camel); transition: width .35s var(--ease);
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .nav-right{display:flex; align-items:center; gap:1.2rem;}
+  .icon-btn{
+    background:none; border:0; color: var(--ivory);
+    display:flex; align-items:center; justify-content:center;
+    padding:0.2rem;
+  }
+  .icon-btn svg{width:19px; height:19px; stroke: currentColor; fill:none; stroke-width:1.3;}
+  .icon-btn:hover{color: var(--camel-soft);}
+  .nav-toggle{display:none; background:none; border:0; color:var(--ivory);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height: 92vh;
+    background: radial-gradient(120% 90% at 78% 12%, #182b46 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color: var(--ivory);
+    display:flex; align-items:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(242,237,224,0.035) 0 1px, transparent 1px 120px);
+    pointer-events:none;
+  }
+  .hero-vertical{
+    position:absolute; right: clamp(1rem,3vw,3.2rem); top:0; bottom:0;
+    display:flex; align-items:center;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.32em;
+    font-size: 0.7rem;
+    color: var(--camel-soft);
+    text-transform:uppercase;
+    opacity:0.85;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    padding: 6.5rem clamp(1.5rem,5vw,4rem) 5rem;
+    max-width: 1240px; margin:0 auto; width:100%;
+  }
+  .hero-crest{width: 108px; height:108px; margin-bottom: 2.2rem;}
+  .hero-crest path, .hero-crest circle{
+    stroke: var(--camel);
+    stroke-dasharray: 340;
+    stroke-dashoffset: 340;
+    animation: draw 2.4s var(--ease) forwards .3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .hero h1{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 5.6rem);
+    line-height: 1.02;
+    max-width: 15ch;
+    letter-spacing: -0.01em;
+  }
+  .hero p.sub{
+    margin-top: 1.8rem;
+    max-width: 42ch;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--ivory-dim);
+    font-weight: 300;
+  }
+  .hero-cta{
+    margin-top: 2.8rem;
+    display:flex; gap: 1.1rem; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding: 0.95rem 1.9rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid var(--camel);
+    transition: background .35s var(--ease), color .35s var(--ease);
+    background:none;
+  }
+  .btn.solid{background: var(--camel); color: var(--navy-deep);}
+  .btn.solid:hover{background: var(--camel-soft);}
+  .btn.ghost{color: var(--ivory); border-color: rgba(242,237,224,0.4);}
+  .btn.ghost:hover{border-color: var(--camel); color: var(--camel-soft);}
+
+  .scroll-cue{
+    position:absolute; left: clamp(1.5rem,5vw,4rem); bottom: 2.4rem;
+    display:flex; align-items:center; gap:0.6rem;
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+    color: var(--ivory-dim); opacity:0.75;
+  }
+  .scroll-cue .line{width:26px; height:1px; background: var(--camel);}
+
+  /* ---------- manifesto ---------- */
+  .manifesto{
+    background: var(--ivory);
+    padding: clamp(5rem,10vw,8rem) 0;
+  }
+  .manifesto .wrap{max-width: 940px;}
+  .manifesto blockquote{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4.4vw, 3rem);
+    line-height: 1.25;
+    color: var(--charcoal);
+  }
+  .manifesto cite{
+    display:block; margin-top:1.6rem;
+    font-style:normal; font-size:0.78rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:#7a6f5c;
+  }
+  .manifesto .body-copy{
+    margin-top: 3rem;
+    max-width: 60ch;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: #3a352b;
+    font-weight: 300;
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    background: var(--charcoal);
+    color: var(--ivory-dim);
+    overflow:hidden;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .marquee-track{
+    display:flex; width:max-content;
+    animation: scroll-left 32s linear infinite;
+  }
+  .marquee-track span{
+    font-family: var(--serif); font-style:italic;
+    font-size: 1.05rem;
+    padding: 0 2.2rem;
+    white-space:nowrap;
+    display:flex; align-items:center; gap:2.2rem;
+  }
+  .marquee-track span::after{content:'—'; color: var(--camel);}
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- values ---------- */
+  .values{
+    background: var(--navy-deep);
+    color: var(--ivory);
+    padding: clamp(5rem,10vw,8rem) 0;
+  }
+  .values .head{max-width: 620px; margin-bottom: 3.6rem;}
+  .values .head h2{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-top: 0.8rem;
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .value-card{
+    background: var(--navy-deep);
+    padding: 2.4rem 2rem;
+    transition: background .4s var(--ease);
+  }
+  .value-card:hover{background: #14243a;}
+  .value-card h3{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: 1.4rem; color: var(--camel-soft);
+    margin-bottom: 0.9rem;
+  }
+  .value-card p{
+    font-size: 0.9rem; line-height:1.7; color: var(--ivory-dim); font-weight:300;
+  }
+
+  /* ---------- collection ---------- */
+  .collection{
+    background: var(--ivory);
+    padding: clamp(5rem,10vw,8rem) 0;
+  }
+  .collection .head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
+    flex-wrap:wrap;
+    margin-bottom: 3.6rem;
+    border-bottom: 1px solid rgba(23,20,15,0.15);
+    padding-bottom: 2rem;
+  }
+  .collection .head h2{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+    margin-top: 0.6rem;
+  }
+  .collection .head p{
+    max-width: 34ch; font-size:0.92rem; line-height:1.7; color:#54503f; font-weight:300;
+  }
+
+  .piece-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.6rem;
+  }
+  .piece{
+    display:flex; flex-direction:column;
+  }
+  .piece-frame{
+    position:relative;
+    background: linear-gradient(160deg, #efe8d6, #e2d8bf);
+    border: 1px solid rgba(23,20,15,0.1);
+    aspect-ratio: 4/5;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .piece-frame svg{
+    width: 62%; height:62%;
+    stroke: var(--charcoal);
+    fill:none; stroke-width:1.1;
+    transition: transform .6s var(--ease), stroke .4s var(--ease);
+  }
+  .piece:hover .piece-frame svg{ transform: scale(1.06); stroke: var(--burgundy); }
+  .piece-frame .tag{
+    position:absolute; top:0.9rem; left:0.9rem;
+    font-size: 0.66rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:#6b6350;
+  }
+  .piece-frame .add-btn{
+    position:absolute; bottom:0.9rem; right:0.9rem;
+    font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+    background: var(--charcoal); color: var(--ivory);
+    padding: 0.5rem 0.8rem;
+    opacity:0; transform: translateY(6px);
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+  }
+  .piece:hover .piece-frame .add-btn{opacity:1; transform:none;}
+  .piece-info{padding-top: 1.1rem;}
+  .piece-info h3{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: 1.28rem;
+  }
+  .piece-info .fabric{
+    font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#8a8267; margin-top:0.3rem;
+  }
+  .piece-info .desc{
+    font-size: 0.86rem; color:#59543f; margin-top:0.5rem; line-height:1.55; font-weight:300;
+  }
+  .piece-meta{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top: 0.9rem;
+  }
+  .swatches{display:flex; gap:0.4rem;}
+  .swatch{width:13px; height:13px; border-radius:50%; border:1px solid rgba(0,0,0,0.15);}
+  .price{font-size:0.84rem; letter-spacing:0.04em; color: var(--burgundy); font-weight:600;}
+
+  /* ---------- accessories ---------- */
+  .accessories{
+    background: var(--forest);
+    color: var(--ivory);
+    padding: clamp(4.5rem,9vw,7rem) 0;
+  }
+  .accessories .head h2{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  }
+  .accessories .head p{
+    max-width: 46ch; margin-top:0.9rem; font-size:0.92rem; color: #d6dfd4; font-weight:300; line-height:1.7;
+  }
+  .acc-row{
+    margin-top: 3rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 1px;
+    background: rgba(242,237,224,0.18);
+    border: 1px solid rgba(242,237,224,0.18);
+  }
+  .acc-card{
+    background: var(--forest);
+    padding: 1.8rem 1.4rem 2rem;
+    text-align:center;
+  }
+  .acc-card svg{ width:44px; height:44px; margin:0 auto 1rem; stroke: var(--camel-soft); fill:none; stroke-width:1.1;}
+  .acc-card h4{font-size:0.9rem; font-weight:600; letter-spacing:0.02em;}
+  .acc-card .price{display:block; margin-top:0.35rem; font-size:0.78rem; color:#c8d3c4; font-weight:400;}
+
+  /* ---------- waitlist ---------- */
+  .waitlist{
+    background: var(--charcoal);
+    color: var(--ivory);
+    padding: clamp(5rem,10vw,7.5rem) 0;
+    text-align:center;
+    position:relative;
+  }
+  .waitlist h2{
+    font-family: var(--serif); font-style:italic; font-weight:400;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+  }
+  .waitlist p{
+    margin: 1.2rem auto 0; max-width:48ch; color: var(--ivory-dim); font-weight:300; line-height:1.7;
+  }
+  form.wl-form{
+    margin: 2.6rem auto 0; display:flex; max-width: 460px; border: 1px solid rgba(242,237,224,0.35);
+  }
+  form.wl-form input{
+    flex:1; background:transparent; border:0; padding: 1rem 1.2rem;
+    color: var(--ivory); font-family: var(--sans); font-size:0.9rem; outline:none;
+  }
+  form.wl-form input::placeholder{color: rgba(242,237,224,0.5);}
+  form.wl-form button{
+    background: var(--camel); border:0; padding: 0 1.6rem;
+    font-size: 0.75rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color: var(--navy-deep);
+    transition: background .3s;
+  }
+  form.wl-form button:hover{background: var(--camel-soft);}
+  .wl-note{margin-top:1rem; font-size:0.78rem; color: var(--camel-soft); min-height:1.2em;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background: var(--charcoal);
+    color: var(--ivory-dim);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .foot-top{
+    display:flex; justify-content:space-between; gap:3rem; flex-wrap:wrap;
+    padding-bottom: 3rem; border-bottom: 1px solid rgba(242,237,224,0.14);
+  }
+  .foot-motto{
+    font-family: var(--serif); font-style:italic; font-size: clamp(1.4rem,3vw,2rem);
+    max-width: 20ch; color: var(--ivory);
+  }
+  .foot-cols{display:flex; gap: 3.5rem; flex-wrap:wrap;}
+  .foot-col h5{font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color: var(--camel); margin-bottom:1rem;}
+  .foot-col a, .foot-col span, .foot-col button{display:block; font-size:0.86rem; color: var(--ivory-dim); margin-bottom:0.65rem; font-weight:300; background:none; border:0; text-align:left; padding:0;}
+  .foot-col a:hover, .foot-col button:hover{color: var(--camel-soft);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    padding-top: 1.8rem; font-size:0.75rem; color:#8b8574;
+  }
+  .foot-social{display:flex; gap:1rem;}
+  .foot-social a svg{width:18px; height:18px; stroke: var(--ivory-dim); fill:none; transition: stroke .3s;}
+  .foot-social a:hover svg{stroke: var(--camel);}
+
+  /* ---------- account drawer ---------- */
+  .overlay{
+    position:fixed; inset:0; background: rgba(10,15,25,0.55);
+    z-index: 900; opacity:0; pointer-events:none;
+    transition: opacity .35s var(--ease);
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+
+  .drawer{
+    position:fixed; top:0; right:0; bottom:0;
+    width: min(440px, 100%);
+    background: var(--ivory);
+    color: var(--charcoal);
+    z-index: 950;
+    transform: translateX(100%);
+    transition: transform .45s var(--ease);
+    display:flex; flex-direction:column;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.25);
+  }
+  .drawer.open{transform:none;}
+  .drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.6rem 1.8rem;
+    background: var(--navy-deep); color: var(--ivory);
+  }
+  .drawer-head .name{font-family: var(--serif); font-style:italic; font-size:1.15rem;}
+  .drawer-close{background:none; border:0; color:var(--ivory); font-size:1.3rem; line-height:1;}
+  .drawer-close:hover{color: var(--camel-soft);}
+
+  .drawer-tabs{display:flex; border-bottom: 1px solid rgba(23,20,15,0.12);}
+  .drawer-tab{
+    flex:1; padding: 1rem 0.6rem; text-align:center;
+    font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;
+    color:#8a8267; border-bottom: 2px solid transparent;
+    background:none; border-top:0; border-left:0; border-right:0;
+  }
+  .drawer-tab.active{color: var(--burgundy); border-bottom-color: var(--burgundy);}
+  .drawer-body{flex:1; overflow-y:auto; padding: 1.8rem;}
+  .drawer-panel{display:none;}
+  .drawer-panel.active{display:block;}
+
+  /* sign-in */
+  .signin-box{max-width: 340px; margin: 1rem auto 0;}
+  .signin-box p.lede{font-size:0.86rem; color:#59543f; line-height:1.6; margin-bottom:1.6rem; font-weight:300;}
+  .field{margin-bottom:1.1rem;}
+  .field label{display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#8a8267; margin-bottom:0.4rem;}
+  .field input{
+    width:100%; padding:0.8rem 0.9rem; border:1px solid rgba(23,20,15,0.2); background:#fff;
+    font-family: var(--sans); font-size:0.9rem; outline:none;
+  }
+  .field input:focus{border-color: var(--burgundy);}
+  .signin-box .btn{width:100%; justify-content:center; border-color:var(--charcoal); color:var(--charcoal); margin-top:0.4rem;}
+  .signin-box .btn:hover{background:var(--charcoal); color:var(--ivory);}
+  .signin-alt{margin-top:1.2rem; font-size:0.78rem; text-align:center; color:#8a8267;}
+  .signin-alt button{background:none; border:0; color:var(--burgundy); text-decoration:underline; font-size:inherit;}
+
+  /* profile */
+  .profile-row{display:flex; align-items:center; gap:1rem; margin-bottom:2rem;}
+  .profile-avatar{
+    width:56px; height:56px; border-radius:50%; background: var(--navy-deep); color: var(--camel-soft);
+    display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:1.3rem;
+  }
+  .profile-row h3{font-family: var(--serif); font-style:italic; font-size:1.2rem;}
+  .profile-row span{display:block; font-size:0.78rem; color:#8a8267; margin-top:0.2rem;}
+  .profile-list .field{margin-bottom:1rem;}
+  .signout{margin-top:1.6rem; font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color:#8a8267; background:none; border:0; text-decoration:underline;}
+
+  /* orders */
+  .order-card{border:1px solid rgba(23,20,15,0.14); padding:1.3rem; margin-bottom:1.2rem; background:#fff;}
+  .order-card .order-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.9rem;}
+  .order-card .order-id{font-size:0.82rem; font-weight:600;}
+  .order-card .order-date{font-size:0.72rem; color:#8a8267;}
+  .order-items{display:flex; gap:0.6rem; margin-bottom:1rem;}
+  .order-thumb{width:44px; height:52px; background: linear-gradient(160deg,#efe8d6,#e2d8bf); border:1px solid rgba(23,20,15,0.1); display:flex; align-items:center; justify-content:center;}
+  .order-thumb svg{width:70%; height:70%; stroke:var(--charcoal); fill:none; stroke-width:1.2;}
+  .order-steps{display:flex; align-items:center; margin-top:0.6rem;}
+  .order-step{flex:1; text-align:center; position:relative;}
+  .order-step .dot{width:9px; height:9px; border-radius:50%; background:#d8d0bb; margin:0 auto 0.5rem; position:relative; z-index:2;}
+  .order-step.done .dot{background: var(--burgundy);}
+  .order-step .line{position:absolute; top:4px; left:-50%; width:100%; height:1px; background:#d8d0bb; z-index:1;}
+  .order-step.done .line{background: var(--burgundy);}
+  .order-step:first-child .line{display:none;}
+  .order-step span{font-size:0.6rem; letter-spacing:0.05em; text-transform:uppercase; color:#8a8267;}
+  .order-step.done span{color: var(--burgundy); font-weight:600;}
+  .order-total{text-align:right; font-size:0.82rem; font-weight:600; color:var(--burgundy); margin-top:0.8rem;}
+
+  /* wardrobe */
+  .wardrobe-intro{font-size:0.84rem; color:#59543f; line-height:1.6; margin-bottom:1.4rem; font-weight:300;}
+  .wardrobe-grid{display:grid; grid-template-columns: repeat(2,1fr); gap:1rem;}
+  .wardrobe-card{border:1px solid rgba(23,20,15,0.14); background:#fff; padding-bottom:0.9rem;}
+  .wardrobe-frame{aspect-ratio:4/5; background: linear-gradient(160deg,#efe8d6,#e2d8bf); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(23,20,15,0.1);}
+  .wardrobe-frame svg{width:56%; height:56%; stroke:var(--charcoal); fill:none; stroke-width:1.1;}
+  .wardrobe-card h5{font-size:0.86rem; font-family:var(--serif); font-style:italic; margin:0.7rem 0.8rem 0.2rem;}
+  .wardrobe-card .worn{font-size:0.68rem; color:#8a8267; margin:0 0.8rem;}
+
+  @media (max-width: 900px){
+    .value-grid{grid-template-columns: repeat(2,1fr);}
+  }
+  @media (max-width: 720px){
+    nav.links{
+      position:fixed; inset: 0 0 0 30%; background: var(--navy-deep);
+      flex-direction:column; align-items:flex-start; justify-content:center;
+      padding: 3rem 2.2rem; gap: 1.8rem;
+      transform: translateX(100%); transition: transform .45s var(--ease);
+    }
+    nav.links.open{transform: translateX(0);}
+    .nav-toggle{display:block;}
+    .value-grid{grid-template-columns: 1fr;}
+    .collection .head{flex-direction:column; align-items:flex-start;}
+    .hero-vertical{display:none;}
+    .wardrobe-grid{grid-template-columns:1fr 1fr;}
+    .drawer{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">Complimentary Shipping &amp; Returns on All Orders · <strong>Book a Private Styling Appointment</strong></div>
+
+<header class="site-nav" id="siteNav">
+  <a href="#top" class="brand-mark">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="18.5" stroke="currentColor" stroke-width="0.8"/>
+      <path d="M11 27V13L20 24V13" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M23 13H29M29 13V27M29 27H23M29 20H24" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="name">Nouveau Élan</span>
+  </a>
+
+  <nav class="links" id="navLinks">
+    <a href="#collection">Collection</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#waitlist">Join</a>
+  </nav>
+
+  <div class="nav-right">
+    <button class="icon-btn" id="accountToggle" aria-label="Account">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.5-4 5-5.5 7.5-5.5S18 16 19.5 20"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-vertical">PARIS · NEW MOMENTUM · ÉTABLIE 2026</div>
+  <div class="hero-inner">
+    <svg class="hero-crest" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="44" stroke-width="1"/>
+      <path d="M32 66V34L50 58V34" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M56 34H70M70 34V66M70 66H56M70 50H60" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="eyebrow">Maison Française — French Luxury Apparel</p>
+    <h1>L'art de<br>l'individualité.</h1>
+    <p class="sub">Nouveau Élan Paris crafts timeless apparel for those who build rather than follow — clothing for a life defined by purpose, discipline, and a style entirely your own.</p>
+    <div class="hero-cta">
+      <a href="#collection" class="btn solid">Discover the Collection</a>
+      <a href="#philosophy" class="btn ghost">Our Philosophy</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span> Scroll</div>
+</section>
+
+<section class="manifesto reveal" id="philosophy">
+  <div class="wrap">
+    <p class="eyebrow">Brand Philosophy</p>
+    <blockquote>
+      "I don't wear luxury to impress others. I wear it because it reflects who I am."
+      <cite>The Nouveau Élan Customer</cite>
+    </blockquote>
+    <p class="body-copy">Nouveau Élan is not about following fashion. It is about creating a life defined by purpose, discipline, and personal style. We design for entrepreneurs, athletes, and independent thinkers who move at their own pace — people for whom luxury is a private conviction, not a public performance.</p>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Luxury Automobiles</span><span>Golf</span><span>European Travel</span><span>Fine Dining</span><span>Architecture</span><span>Entrepreneurship</span><span>European Fashion</span>
+    <span>Luxury Automobiles</span><span>Golf</span><span>European Travel</span><span>Fine Dining</span><span>Architecture</span><span>Entrepreneurship</span><span>European Fashion</span>
+  </div>
+</div>
+
+<section class="values reveal">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">What We Stand For</p>
+      <h2>Six principles, one point of view.</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card"><h3>Individuality</h3><p>We dress people who are building a life on their own terms — never a trend, never borrowed from someone else's story.</p></div>
+      <div class="value-card"><h3>Heritage</h3><p>European tailoring traditions, reinterpreted for a generation that respects the past while creating its own future.</p></div>
+      <div class="value-card"><h3>Excellence</h3><p>Heavyweight fabrics, tonal embroidery, and construction built to outlast the season it was bought in.</p></div>
+      <div class="value-card"><h3>Confidence</h3><p>Clothing that doesn't ask for attention — it earns it, quietly, through fit and fabric.</p></div>
+      <div class="value-card"><h3>Exclusivity</h3><p>Limited production runs. We would rather sell out than mark down.</p></div>
+      <div class="value-card"><h3>Craftsmanship</h3><p>Every piece is considered down to the zipper pull, the button, the stitch you'll never see but always feel.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="collection reveal" id="collection">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">La Première Collection</p>
+        <h2>The First Collection.</h2>
+      </div>
+      <p>A limited production run, designed to be worn for years rather than a season. Five signature pieces, each cut for the way you actually move through your day.</p>
+    </div>
+
+    <div class="piece-grid">
+
+      <article class="piece">
+        <div class="piece-frame">
+          <span class="tag">01 — Outerwear</span>
+          <svg viewBox="0 0 100 120"><path d="M50 6 30 18v10L14 34l6 16 10-6v56h40V44l10 6 6-16-16-6V18z"/><path d="M50 6v14M40 40l10 8 10-8" /><circle cx="50" cy="30" r="2.4" fill="currentColor" stroke="none"/></svg>
+          <span class="add-btn">Add to Bag</span>
+        </div>
+        <div class="piece-info">
+          <h3>The Héritage Quarter-Zip</h3>
+          <p class="fabric">Heavyweight Cotton Blend</p>
+          <p class="desc">Tonal embroidery, suede zipper pull, tailored fit.</p>
+          <div class="piece-meta">
+            <div class="swatches">
+              <span class="swatch" style="background:#1b2c4a"></span>
+              <span class="swatch" style="background:#efe8d6"></span>
+              <span class="swatch" style="background:#25402f"></span>
+              <span class="swatch" style="background:#3a3a3a"></span>
+            </div>
+            <span class="price">$180–250</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-frame">
+          <span class="tag">02 — Knitwear</span>
+          <svg viewBox="0 0 100 120"><path d="M50 8 32 18v8L18 32l6 15 8-4v59h36V43l8 4 6-15-14-6v-8z"/><path d="M40 20a10 10 0 0020 0" /><circle cx="46" cy="70" r="2" fill="currentColor" stroke="none"/><circle cx="46" cy="82" r="2" fill="currentColor" stroke="none"/><circle cx="46" cy="94" r="2" fill="currentColor" stroke="none"/></svg>
+          <span class="add-btn">Add to Bag</span>
+        </div>
+        <div class="piece-info">
+          <h3>The Riviera Knit Polo</h3>
+          <p class="fabric">Textured Cotton Knit</p>
+          <p class="desc">Premium buttons, minimal branding, inspired by European yacht clubs.</p>
+          <div class="piece-meta">
+            <div class="swatches">
+              <span class="swatch" style="background:#f2ede0"></span>
+              <span class="swatch" style="background:#1b2c4a"></span>
+              <span class="swatch" style="background:#5c1f28"></span>
+            </div>
+            <span class="price">$150–220</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-frame">
+          <span class="tag">03 — Tailoring</span>
+          <svg viewBox="0 0 100 120"><path d="M32 10h36l4 18-14 4v78H42V32l-14-4z"/><path d="M50 32v78M32 10l18 12 18-12"/></svg>
+          <span class="add-btn">Add to Bag</span>
+        </div>
+        <div class="piece-info">
+          <h3>The Founder Trouser</h3>
+          <p class="fabric">Wool Blend, Stretch Comfort</p>
+          <p class="desc">Tailored fit — built for the boardroom and beyond.</p>
+          <div class="piece-meta">
+            <div class="swatches">
+              <span class="swatch" style="background:#cdbfa0"></span>
+              <span class="swatch" style="background:#1b2c4a"></span>
+              <span class="swatch" style="background:#181818"></span>
+            </div>
+            <span class="price">$180–300</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-frame">
+          <span class="tag">04 — Comfort</span>
+          <svg viewBox="0 0 100 120"><path d="M50 6 30 16v10L12 34l6 17 12-6v53h40V45l12 6 6-17-18-8V16z"/><path d="M40 18a10 10 0 0020 0" opacity="0.6"/><path d="M42 22c0 6 4 8 8 8s8-2 8-8" /></svg>
+          <span class="add-btn">Add to Bag</span>
+        </div>
+        <div class="piece-info">
+          <h3>The Signature Hoodie</h3>
+          <p class="fabric">500 GSM Heavyweight Cotton</p>
+          <p class="desc">Embroidered crest, luxury interior lining.</p>
+          <div class="piece-meta">
+            <div class="swatches">
+              <span class="swatch" style="background:#efe8d6"></span>
+              <span class="swatch" style="background:#181818"></span>
+              <span class="swatch" style="background:#a9a49a"></span>
+            </div>
+            <span class="price">$150–200</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-frame">
+          <span class="tag">05 — Shirting</span>
+          <svg viewBox="0 0 100 120"><path d="M50 8 34 16l-4 12-14 4 6 16 10-4v66h36V44l10 4 6-16-14-4-4-12z"/><path d="M50 8v100M40 20l10 8 10-8"/></svg>
+          <span class="add-btn">Add to Bag</span>
+        </div>
+        <div class="piece-info">
+          <h3>The Oxford Héritage Shirt</h3>
+          <p class="fabric">Premium Cotton</p>
+          <p class="desc">A quiet-luxury staple with a relaxed European fit.</p>
+          <div class="piece-meta">
+            <div class="swatches">
+              <span class="swatch" style="background:#f7f5ee; border:1px solid #ccc"></span>
+              <span class="swatch" style="background:#a9c3d8"></span>
+              <span class="swatch" style="background:#efe8d6"></span>
+            </div>
+            <span class="price">$120–180</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="accessories reveal">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" style="color:var(--camel-soft)">Accessories</p>
+      <h2>Finished, down to the last detail.</h2>
+      <p>Small leather goods and accessories designed to travel with you — built for higher margins in the shop, and higher standards on you.</p>
+    </div>
+    <div class="acc-row">
+      <div class="acc-card">
+        <svg viewBox="0 0 40 40"><rect x="6" y="12" width="28" height="18" rx="1.5"/><path d="M6 18h28"/></svg>
+        <h4>Leather Card Holder</h4><span class="price">$80–120</span>
+      </div>
+      <div class="acc-card">
+        <svg viewBox="0 0 40 40"><path d="M20 8c9 0 14 5 14 12H6c0-7 5-12 14-12z"/><path d="M9 20l-1 6h24l-1-6"/></svg>
+        <h4>Wool Club Cap</h4><span class="price">$60–90</span>
+      </div>
+      <div class="acc-card">
+        <svg viewBox="0 0 40 40"><path d="M5 20c8-8 22-8 30 0-8 8-22 8-30 0z"/><circle cx="20" cy="20" r="2" fill="currentColor" stroke="none"/></svg>
+        <h4>Silk Scarf</h4><span class="price">$120–200</span>
+      </div>
+      <div class="acc-card">
+        <svg viewBox="0 0 40 40"><rect x="4" y="17" width="32" height="7" rx="1"/><circle cx="20" cy="20.5" r="2.4"/></svg>
+        <h4>Italian Leather Belt</h4><span class="price">$150–250</span>
+      </div>
+      <div class="acc-card">
+        <svg viewBox="0 0 40 40"><rect x="8" y="14" width="24" height="18" rx="2"/><path d="M14 14v-3a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>
+        <h4>Leather Travel Bag</h4><span class="price">$350–600</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waitlist reveal" id="waitlist">
+  <div class="wrap">
+    <p class="eyebrow">La Première Collection</p>
+    <h2>Be first through the door.</h2>
+    <p>Production is limited by design. Join the list to receive early access before the collection is offered to the public.</p>
+    <form class="wl-form" id="wlForm">
+      <input type="email" required placeholder="Your email address" id="wlEmail">
+      <button type="submit">Join</button>
+    </form>
+    <p class="wl-note" id="wlNote"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <p class="foot-motto">Nouveau Élan Paris — L'art de l'individualité.</p>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Explore</h5>
+          <a href="#collection">Collection</a>
+          <a href="#philosophy">Philosophy</a>
+          <a href="#maison">The Maison</a>
+        </div>
+        <div class="foot-col">
+          <h5>Account</h5>
+          <button id="footAccount">My Nouveau Élan</button>
+          <button id="footOrders">Track an Order</button>
+          <button id="footWardrobe">My Wardrobe</button>
+        </div>
+        <div class="foot-col">
+          <h5>Client Care</h5>
+          <a href="mailto:contact@nouveauelanparis.com">Contact Us</a>
+          <span>Shipping &amp; Returns</span>
+          <span>Size Guide</span>
+        </div>
+        <div class="foot-col">
+          <h5>Maison</h5>
+          <span>Paris, France</span>
+          <span>Established 2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nouveau Élan Paris. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v10.5a3.5 3.5 0 11-3.5-3.5"/><path d="M14 3c0 3 2.5 5 5 5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Account Drawer ===== -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="name" id="drawerTitle">My Nouveau Élan</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  </div>
+
+  <!-- Signed-out state -->
+  <div class="drawer-body" id="signedOutView">
+    <div class="signin-box">
+      <p class="lede">Sign in to track your orders, manage your details, and view your personal wardrobe of Nouveau Élan pieces.</p>
+      <div class="field"><label>Email Address</label><input type="email" placeholder="you@email.com" id="loginEmail"></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="••••••••" id="loginPass"></div>
+      <button class="btn solid" id="signInBtn" style="justify-content:center; width:100%;">Sign In</button>
+      <p class="signin-alt">New here? <button id="showRegister">Create an account</button></p>
+    </div>
+  </div>
+
+  <!-- Signed-in state -->
+  <div id="signedInView" style="display:none; flex:1; display:flex; flex-direction:column;">
+    <div class="drawer-tabs">
+      <button class="drawer-tab active" data-tab="profile">Profile</button>
+      <button class="drawer-tab" data-tab="orders">Orders</button>
+      <button class="drawer-tab" data-tab="wardrobe">Wardrobe</button>
+    </div>
+    <div class="drawer-body">
+
+      <div class="drawer-panel active" data-panel="profile">
+        <div class="profile-row">
+          <div class="profile-avatar">A</div>
+          <div>
+            <h3>Alex Moreau</h3>
+            <span>alex.moreau@email.com</span>
+          </div>
+        </div>
+        <div class="profile-list">
+          <div class="field"><label>Full Name</label><input type="text" value="Alex Moreau"></div>
+          <div class="field"><label>Email</label><input type="email" value="alex.moreau@email.com"></div>
+          <div class="field"><label>Shipping Address</label><input type="text" value="14 Rue de Rivoli, 75001 Paris"></div>
+        </div>
+        <button class="btn solid" style="width:100%; justify-content:center;">Save Changes</button>
+        <button class="signout" id="signOutBtn">Sign Out</button>
+      </div>
+
+      <div class="drawer-panel" data-panel="orders">
+        <div class="order-card">
+          <div class="order-top"><span class="order-id">Order #NE-1042</span><span class="order-date">Aug 3, 2026</span></div>
+          <div class="order-items">
+            <div class="order-thumb"><svg viewBox="0 0 100 120"><path d="M50 6 30 18v10L14 34l6 16 10-6v56h40V44l10 6 6-16-16-6V18z"/></svg></div>
+            <div class="order-thumb"><svg viewBox="0 0 100 120"><rect x="4" y="17" width="92" height="26" rx="4" transform="translate(0 30)"/></svg></div>
+          </div>
+          <div class="order-steps">
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Placed</span></div>
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Crafted</span></div>
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Shipped</span></div>
+            <div class="order-step"><span class="line"></span><span class="dot"></span><span>Delivered</span></div>
+          </div>
+          <div class="order-total">Héritage Quarter-Zip + Leather Belt — $410</div>
+        </div>
+
+        <div class="order-card">
+          <div class="order-top"><span class="order-id">Order #NE-0988</span><span class="order-date">Jul 19, 2026</span></div>
+          <div class="order-items">
+            <div class="order-thumb"><svg viewBox="0 0 100 120"><path d="M50 8 34 16l-4 12-14 4 6 16 10-4v66h36V44l10 4 6-16-14-4-4-12z"/></svg></div>
+          </div>
+          <div class="order-steps">
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Placed</span></div>
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Crafted</span></div>
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Shipped</span></div>
+            <div class="order-step done"><span class="line"></span><span class="dot"></span><span>Delivered</span></div>
+          </div>
+          <div class="order-total">Oxford Héritage Shirt — $150</div>
+        </div>
+      </div>
+
+      <div class="drawer-panel" data-panel="wardrobe">
+        <p class="wardrobe-intro">Every Nouveau Élan piece you've purchased, kept together in one place.</p>
+        <div class="wardrobe-grid">
+          <div class="wardrobe-card">
+            <div class="wardrobe-frame"><svg viewBox="0 0 100 120"><path d="M50 6 30 18v10L14 34l6 16 10-6v56h40V44l10 6 6-16-16-6V18z"/></svg></div>
+            <h5>Héritage Quarter-Zip</h5>
+            <p class="worn">Purchased Aug 2026 · Navy</p>
+          </div>
+          <div class="wardrobe-card">
+            <div class="wardrobe-frame"><svg viewBox="0 0 40 40" style="width:56%;height:56%;"><rect x="4" y="17" width="32" height="7" rx="1"/><circle cx="20" cy="20.5" r="2.4"/></svg></div>
+            <h5>Italian Leather Belt</h5>
+            <p class="worn">Purchased Aug 2026 · Black</p>
+          </div>
+          <div class="wardrobe-card">
+            <div class="wardrobe-frame"><svg viewBox="0 0 100 120"><path d="M50 8 34 16l-4 12-14 4 6 16 10-4v66h36V44l10 4 6-16-14-4-4-12z"/></svg></div>
+            <h5>Oxford Héritage Shirt</h5>
+            <p class="worn">Purchased Jul 2026 · Sky Blue</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => io.observe(r));
+
+  // Waitlist mock submit
+  const wlForm = document.getElementById('wlForm');
+  const wlNote = document.getElementById('wlNote');
+  wlForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('wlEmail').value;
+    wlNote.textContent = `Merci — ${email} has been added to the waitlist.`;
+    wlForm.reset();
+  });
+
+  // ---- Account Drawer logic (in-memory demo state only, no persistence) ----
+  const overlay = document.getElementById('overlay');
+  const drawer = document.getElementById('drawer');
+  const accountToggle = document.getElementById('accountToggle');
+  const drawerClose = document.getElementById('drawerClose');
+  const signedOutView = document.getElementById('signedOutView');
+  const signedInView = document.getElementById('signedInView');
+  const signInBtn = document.getElementById('signInBtn');
+  const signOutBtn = document.getElementById('signOutBtn');
+  const drawerTitle = document.getElementById('drawerTitle');
+
+  function openDrawer(){
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+    document.body.classList.add('locked');
+  }
+  function closeDrawer(){
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    document.body.classList.remove('locked');
+  }
+  accountToggle.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+
+  function openToPanel(panelName){
+    openDrawer();
+    if (signedInView.style.display === 'flex' || signedInView.style.display === '') {
+      // already signed in in this demo session
+    }
+    if (signedInView.style.display !== 'none') {
+      document.querySelectorAll('.drawer-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === panelName));
+      document.querySelectorAll('.drawer-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === panelName));
+    }
+  }
+  document.getElementById('footAccount').addEventListener('click', () => openToPanel('profile'));
+  document.getElementById('footOrders').addEventListener('click', () => openToPanel('orders'));
+  document.getElementById('footWardrobe').addEventListener('click', () => openToPanel('wardrobe'));
+
+  signInBtn.addEventListener('click', () => {
+    signedOutView.style.display = 'none';
+    signedInView.style.display = 'flex';
+    drawerTitle.textContent = 'My Nouveau Élan';
+  });
+  signOutBtn.addEventListener('click', () => {
+    signedInView.style.display = 'none';
+    signedOutView.style.display = 'block';
+  });
+
+  document.querySelectorAll('.drawer-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.drawer-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.drawer-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
